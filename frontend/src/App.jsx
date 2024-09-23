@@ -1,19 +1,23 @@
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Navbar from "./components/shared/Navbar";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import Home from "./components/Home";
 
-// const appRouter = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home />,
-//   },
-//   {
-//     path: "/login",
-//     element: <Login />,
-//   },
-//   {
-//     path: "/signup",
-//     element: <Signup />,
-//   },
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
+  },
+]);
 //   {
 //     path: "/jobs",
 //     element: <Jobs />,
@@ -79,11 +83,11 @@ import Navbar from "./components/shared/Navbar";
 //       </ProtectedRoute>
 //     ),
 //   },
-// ]);
+
 function App() {
   return (
     <div>
-      <Navbar />
+      <RouterProvider router={appRouter} />
     </div>
   );
 }

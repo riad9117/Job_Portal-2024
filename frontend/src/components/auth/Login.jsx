@@ -2,8 +2,43 @@ import { Label } from "@radix-ui/react-label";
 import { RadioGroup } from "@radix-ui/react-radio-group";
 import Navbar from "../shared/Navbar";
 import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const Login = () => {
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+    role: "",
+  });
+
+  const changeEventHandler = (e) => {
+    setInput({ ...input, [e.target.name]: e.target.value });
+  };
+
+  const navigate = useNavigate();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post(`${USER_API_END_POINT}/register`, input, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.data.success) {
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -17,10 +52,10 @@ const Login = () => {
             <Label>Email</Label>
             <Input
               type="email"
-              value={input.email}
               name="email"
+              value={input.email}
               onChange={changeEventHandler}
-              placeholder="patel@gmail.com"
+              placeholder="Enter you email"
             />
           </div>
 
@@ -28,10 +63,10 @@ const Login = () => {
             <Label>Password</Label>
             <Input
               type="password"
-              value={input.password}
               name="password"
+              value={input.password}
               onChange={changeEventHandler}
-              placeholder="patel@gmail.com"
+              placeholder="Enter your password"
             />
           </div>
           <div className="flex items-center justify-between">
@@ -60,16 +95,16 @@ const Login = () => {
               </div>
             </RadioGroup>
           </div>
-      
-            <Button type="submit" className="w-full my-4">
-              Login
-            </Button>
-         
+
+          <Button type="submit" className="w-full my-4">
+            Login
+          </Button>
+
           <span className="text-sm">
-            Don't have an account?{" "}
-            <link to="/signup" className="text-blue-600">
+            Don't have an account?
+            <Link to="/signup" className="text-blue-600">
               Signup
-            </link>
+            </Link>
           </span>
         </form>
       </div>

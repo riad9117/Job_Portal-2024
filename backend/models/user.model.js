@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema(
     phoneNumber: {
       type: Number,
       required: true,
+      match: /^(?:\+88|88)?(01[3-9]\d{8})$/,
     },
     password: {
       type: String,
