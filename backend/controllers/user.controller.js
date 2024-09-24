@@ -2,6 +2,8 @@ import { User } from "../models/user.model.js";
 
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import getDataUri from "../utils/dataUri.js";
+import cloudinary from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
   try {
@@ -89,11 +91,11 @@ export const login = async (req, res) => {
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
         httpsOnly: true,
+        sameSite: "strict",
       })
       .json({
         message: `Welcome back  ${user.fullname}`,
         user,
-        token,
         success: true,
       });
   } catch (error) {
@@ -117,6 +119,10 @@ export const updateProfile = async (req, res) => {
 
     const file = req.file;
 
+    const fileUri = getDataUri(file);
+
+    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
     let skillsArray;
     if (skills) {
       skillsArray = skills.split(",");
@@ -138,6 +144,11 @@ export const updateProfile = async (req, res) => {
     if (phoneNumber) user.phoneNumber = phoneNumber;
     if (bio) user.profile.bio = bio;
     if (skills) user.profile.skills = skillsArray;
+
+    if (cloudResponse) {
+      user.profile.resume = cloudResponse.secure_url;
+      user.profile.resumeOriginalName = file.orginalname;
+    }
 
     await user.save();
 

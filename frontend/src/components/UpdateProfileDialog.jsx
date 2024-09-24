@@ -11,15 +11,14 @@ import { Input } from "./ui/input";
 import { useDispatch, useSelector } from "react-redux";
 import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
-import axios from "axios";
-import { toast } from "sonner";
 import { USER_API_END_POINT } from "@/utils/constant";
+import { toast } from "sonner";
+import axios from "axios";
+import { setUser } from "@/redux/authSlice";
 
 const UpdateProfileDialog = ({ open, setOpen }) => {
   const [loading, setLoading] = useState(false);
-
   const { user } = useSelector((store) => store.auth);
-
   const [input, setInput] = useState({
     fullname: user?.fullname || "",
     email: user?.email || "",
@@ -56,10 +55,12 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         `${USER_API_END_POINT}/profile/update`,
         formData,
         {
-          headers: { "Content-Type": "multipart/form-data" },
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
         }
       );
-
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         toast.success(res.data.message);
@@ -72,7 +73,6 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
     }
     setOpen(false);
   };
-
   return (
     <div>
       <Dialog open={open}>
@@ -116,8 +116,9 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
                   Number
                 </Label>
                 <Input
-                  id="cellNumber"
-                  name="cellNumber"
+                  id="number"
+                  name="number"
+                  type="number"
                   value={input.phoneNumber}
                   onChange={changeEventHandler}
                   className="col-span-3"

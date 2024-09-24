@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
+
   return (
     <div className="bg-white">
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
@@ -49,8 +50,8 @@ const Navbar = () => {
               <PopoverTrigger asChild>
                 <Avatar className="cursor-pointer">
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
-                    alt="@shadcn"
+                    src={user?.profile?.profilePhoto}
+                    alt="Profile Picture"
                   />
                 </Avatar>
               </PopoverTrigger>
@@ -59,15 +60,15 @@ const Navbar = () => {
                   <div className="flex gap-2 space-y-2">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
-                        alt="@shadcn"
+                        src={user?.profile?.profilePhoto}
+                        alt="Profile Picture"
                       />
                     </Avatar>
 
                     <div>
                       <h4 className="font-medium"> {user?.fullname} </h4>
                       <p className="text-sm text-muted-foreground">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        {user?.profile?.bio}
                       </p>
                     </div>
                   </div>
