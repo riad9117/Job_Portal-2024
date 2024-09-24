@@ -7,9 +7,10 @@ import Jobs from "./components/Jobs";
 import Browse from "./components/Browse";
 import Profile from "./components/Profile";
 import JobDescription from "./components/JobDescription";
-import Companies from "./components/Companies.jsx/Companies";
-import CompanyCreate from "./components/Companies.jsx/CompanyCreate";
-import CompanySetup from "./components/Companies.jsx/CompanySetup";
+import Companies from "./components/Admin/Companies";
+import CompanyCreate from "./components/Admin/CompanyCreate";
+import CompanySetup from "./components/Admin/CompanySetup";
+import AdminJobs from "./components/Admin/AdminJobs";
 
 const appRouter = createBrowserRouter([
   {
@@ -53,10 +54,10 @@ const appRouter = createBrowserRouter([
     path: "/admin/companies/:id",
     element: <CompanySetup />,
   },
-  // {
-  //   path:"/admin/jobs",
-  //   element:<ProtectedRoute><AdminJobs/></ProtectedRoute>
-  // },
+  {
+    path: "/admin/jobs",
+    element: <AdminJobs />,
+  },
   // {
   //   path:"/admin/jobs/create",
   //   element:<ProtectedRoute><PostJob/></ProtectedRoute>
