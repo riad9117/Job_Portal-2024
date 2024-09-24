@@ -11,7 +11,9 @@ const LatestJobs = () => {
 
       <div className="grid grid-cols-3 gap-4 my-5">
         {randomJobs.slice(0, 6).map((item, index) => (
-          <LatestJobCards />
+          <span key={index}>
+            <LatestJobCards />
+          </span>
         ))}
         {/* <span>No Job Available</span> */}
       </div>

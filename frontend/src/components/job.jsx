@@ -2,10 +2,14 @@ import React from "react";
 
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Avatar, AvatarImage } from "@radix-ui/react-avatar";
 import { Bookmark } from "lucide-react";
+import { Avatar, AvatarImage } from "./ui/avatar";
+import { useNavigate } from "react-router-dom";
 
-const job = () => {
+const jobID = "uu237417";
+
+const Job = () => {
+  const navigate = useNavigate();
   return (
     <div className="p-5 rounded-md shadow-xl bg-white border border-gray-100">
       <div className="flex items-center justify-between">
@@ -18,7 +22,10 @@ const job = () => {
       <div className="flex items-center gap-2 my-2">
         <Button className="p-6" variant="outline" size="icon">
           <Avatar>
-            <AvatarImage src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg" />
+            <AvatarImage
+              src="https://www.shutterstock.com/image-vector/circle-line-simple-design-logo-600nw-2174926871.jpg"
+              alt="@shadcn"
+            />
           </Avatar>
         </Button>
         <div>
@@ -43,11 +50,16 @@ const job = () => {
         </Badge>
       </div>
       <div className="flex items-center gap-4 mt-4">
-        <Button variant="outline">Details</Button>
+        <Button
+          onClick={() => navigate(`/description/${jobID}`)}
+          variant="outline"
+        >
+          Details
+        </Button>
         <Button className="bg-[#7209b7]">Save For Later</Button>
       </div>
     </div>
   );
 };
 
-export default job;
+export default Job;
