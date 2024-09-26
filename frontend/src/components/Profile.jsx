@@ -8,8 +8,10 @@ import { Avatar, AvatarImage } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import UpdateProfileDialog from "./UpdateProfileDialog";
 import { useSelector } from "react-redux";
+import useGetAppliedJobs from "@/hooks/useGetAppliedJobs";
 
 const Profile = () => {
+  useGetAppliedJobs();
   const [open, setOpen] = useState(false);
   const { user } = useSelector((store) => store.auth);
 
@@ -66,7 +68,6 @@ const Profile = () => {
               className="text-blue-500 w-full hover:underline cursor-pointer"
             >
               {user?.profile?.resumeOriginalName}
-              
             </a>
           ) : (
             <span>NA</span>

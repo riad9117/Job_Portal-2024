@@ -25,7 +25,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((store) => store.auth);
+  const { loading,user } = useSelector((store) => store.auth);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -50,6 +50,11 @@ const Login = () => {
       dispatch(setLoading(false));
     }
   };
+  useEffect(()=>{
+    if(user){
+        navigate("/");
+    }
+},[])
 
   return (
     <div>

@@ -11,6 +11,9 @@ import Companies from "./components/Admin/Companies";
 import CompanyCreate from "./components/Admin/CompanyCreate";
 import CompanySetup from "./components/Admin/CompanySetup";
 import AdminJobs from "./components/Admin/AdminJobs";
+import PostJob from "./components/Admin/PostJob";
+import Applicants from "./components/Admin/Applicants";
+import ProtectedRoute from "./components/Admin/ProtectedRoute";
 
 const appRouter = createBrowserRouter([
   {
@@ -43,80 +46,30 @@ const appRouter = createBrowserRouter([
   },
   // For Admin
   {
-    path: "/admin/companies",
-    element: <Companies />,
+    path:"/admin/companies",
+    element: <ProtectedRoute><Companies/></ProtectedRoute>
   },
   {
-    path: "/admin/companies/create",
-    element: <CompanyCreate />,
+    path:"/admin/companies/create",
+    element: <ProtectedRoute><CompanyCreate/></ProtectedRoute> 
   },
   {
-    path: "/admin/companies/:id",
-    element: <CompanySetup />,
+    path:"/admin/companies/:id",
+    element:<ProtectedRoute><CompanySetup/></ProtectedRoute> 
   },
   {
-    path: "/admin/jobs",
-    element: <AdminJobs />,
+    path:"/admin/jobs",
+    element:<ProtectedRoute><AdminJobs/></ProtectedRoute> 
   },
-  // {
-  //   path:"/admin/jobs/create",
-  //   element:<ProtectedRoute><PostJob/></ProtectedRoute>
-  // },
-  // {
-  //   path:"/admin/jobs/:id/applicants",
-  //   element:<ProtectedRoute><Applicants/></ProtectedRoute>
-  // },
+  {
+    path:"/admin/jobs/create",
+    element:<ProtectedRoute><PostJob/></ProtectedRoute> 
+  },
+  {
+    path:"/admin/jobs/:id/applicants",
+    element:<ProtectedRoute><Applicants/></ProtectedRoute> 
+  },
 ]);
-
-//   // admin ke liye yha se start hoga
-//   {
-//     path: "/admin/companies",
-//     element: (
-//       <ProtectedRoute>
-//         <Companies />
-//       </ProtectedRoute>
-//     ),
-//   },
-//   {
-//     path: "/admin/companies/create",
-//     element: (
-//       <ProtectedRoute>
-//         <CompanyCreate />
-//       </ProtectedRoute>
-//     ),
-//   },
-//   {
-//     path: "/admin/companies/:id",
-//     element: (
-//       <ProtectedRoute>
-//         <CompanySetup />
-//       </ProtectedRoute>
-//     ),
-//   },
-//   {
-//     path: "/admin/jobs",
-//     element: (
-//       <ProtectedRoute>
-//         <AdminJobs />
-//       </ProtectedRoute>
-//     ),
-//   },
-//   {
-//     path: "/admin/jobs/create",
-//     element: (
-//       <ProtectedRoute>
-//         <PostJob />
-//       </ProtectedRoute>
-//     ),
-//   },
-//   {
-//     path: "/admin/jobs/:id/applicants",
-//     element: (
-//       <ProtectedRoute>
-//         <Applicants />
-//       </ProtectedRoute>
-//     ),
-//   },
 
 function App() {
   return (
