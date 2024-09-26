@@ -84,6 +84,7 @@ const PostJob = () => {
                 value={input.title}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job title"
               />
             </div>
             <div>
@@ -94,6 +95,7 @@ const PostJob = () => {
                 value={input.description}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job description"
               />
             </div>
             <div>
@@ -104,6 +106,7 @@ const PostJob = () => {
                 value={input.requirements}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job requirements"
               />
             </div>
             <div>
@@ -114,6 +117,7 @@ const PostJob = () => {
                 value={input.salary}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job salary in LPA"
               />
             </div>
             <div>
@@ -124,6 +128,7 @@ const PostJob = () => {
                 value={input.location}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job title"
               />
             </div>
             <div>
@@ -134,6 +139,7 @@ const PostJob = () => {
                 value={input.jobType}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job place"
               />
             </div>
             <div>
@@ -144,6 +150,7 @@ const PostJob = () => {
                 value={input.experience}
                 onChange={changeEventHandler}
                 className="focus-visible:ring-offset-0 focus-visible:ring-0 my-1"
+                placeholder="Enter job exp. (year)"
               />
             </div>
             <div>

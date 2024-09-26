@@ -19,9 +19,7 @@ const CompaniesTable = () => {
     (store) => store.company
   );
   const [filterCompany, setFilterCompany] = useState(companies);
-
   const navigate = useNavigate();
-
   useEffect(() => {
     const filteredCompany =
       companies.length >= 0 &&
@@ -35,7 +33,6 @@ const CompaniesTable = () => {
       });
     setFilterCompany(filteredCompany);
   }, [companies, searchCompanyByText]);
-
   return (
     <div>
       <Table>
@@ -50,7 +47,7 @@ const CompaniesTable = () => {
         </TableHeader>
         <TableBody>
           {filterCompany?.map((company) => (
-            <tr key={company?._id}>
+            <tr>
               <TableCell>
                 <Avatar>
                   <AvatarImage src={company.logo} />
