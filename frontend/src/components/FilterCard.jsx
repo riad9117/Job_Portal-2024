@@ -10,12 +10,12 @@ const fitlerData = [
     array: ["Mohakhali", "Mohammadpur", "Gulshan", "Mirpur", "Dhanmondi"],
   },
   {
-    fitlerType: "Industry",
+    fitlerType: "Title",
     array: ["Frontend Developer", "Backend Developer", "FullStack Developer"],
   },
   {
     fitlerType: "Salary",
-    array: ["0-35k", "40-80k", "90k-150k"],
+    array: ["0-35", "40-80", "90-150"],
   },
 ];
 const FilterCard = () => {
